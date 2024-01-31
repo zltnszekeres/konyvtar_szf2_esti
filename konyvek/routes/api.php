@@ -25,14 +25,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth.basic')->group(function () {
-    Route::apiResource('/users', UserController::class);
-    //Lekérdezések
+    
+    Route::middleware( ['admin'])->group(function () {
+        //admin útvonalai itt lesznek, pl.
+                    Route::apiResource('/users', UserController::class);
+        });
+        
+    //Lekérdezések with
     Route::get('lending_by_user', [UserController::class, 'lendingByUser']);
     Route::get('all_lending_user_copy', [LendingController::class, 'allLendingUserCopy']);
     Route::get('lendings_count_user', [LendingController::class, 'lendingsCountByUser']);
+    //DB lekérdezések
+    Route::get('title_count/{title}', [BookController::class, 'titleCount']);
+    Route::get('h_author_title/{hardcovered}', [CopyController::class,'hAuthorTitle']);
 });
 
-
+//gest is láthatja
 Route::apiResource('/copies', CopyController::class);
 Route::apiResource('/books', BookController::class);
 
@@ -44,3 +52,4 @@ Route::delete('/lendings/{user_id}/{copy_id}/{start}', [LendingController::class
 
 //egyéb végpontok
 Route::patch('/user_update_password/{id}', [UserController::class, 'updatePassword']);
+//
