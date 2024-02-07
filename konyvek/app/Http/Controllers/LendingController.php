@@ -42,22 +42,22 @@ class LendingController extends Controller
      * Update the specified resource in storage.
      */
     //egyelőre ezt nincs értelme
-    /* public function update(Request $request, $user_id, $copy_id, $start)
+     public function update(Request $request, $user_id, $copy_id, $start)
     {
         $lending = $this->show($user_id, $copy_id, $start);
         
-    } */
+    } 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($user_id, $copy_id, $start)
+    /*public function destroy($user_id, $copy_id, $start)
     {
         Lending::where('user_id', $user_id)
         ->where('copy_id', $copy_id)
         ->where('start', $start)
         ->delete();
-    }
+    }*/
 
     public function allLendingUserCopy(){
         //a modellben megírt függvények 
