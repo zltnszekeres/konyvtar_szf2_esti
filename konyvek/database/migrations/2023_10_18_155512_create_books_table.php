@@ -29,8 +29,8 @@ return new class extends Migration
             
         ]);
         Book::create([
-            'author' => "Marquez", 
-            'title' => "Száz év magány", 
+            'author' => "Kafka", 
+            'title' => "A kastély", 
             
         ]);
     }

@@ -14,4 +14,13 @@ class Reservation extends Model
     'user_id',
     'start',
     'message'];
+
+    protected  function setKeysForSaveQuery($query){
+        $query
+            ->where('book_id', '=', $this->getAttribute('book_id'))
+            ->where('user_id', '=', $this->getAttribute('user_id'))
+            ->where('start', '=', $this->getAttribute('start'));
+
+        return $query;
+    }
 }
